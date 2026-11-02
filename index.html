@@ -43,11 +43,13 @@
   </ul>
 
   <h2>Sign in with Google</h2>
-  <p>To send mail from your own Gmail account, OutreachPilot uses Google's standard sign-in (OAuth 2.0). Your browser opens Google's own consent page, so the app never sees your password. The app asks for one Gmail permission:</p>
+  <p>To send mail from your own Gmail account, OutreachPilot uses Google's standard sign-in (OAuth 2.0). Your browser opens Google's own consent page, so the app never sees your password. The app asks for one Gmail permission, <code>gmail.modify</code>, and uses it for three things:</p>
   <ul>
-    <li><strong>Send email</strong> (<code>gmail.send</code>): to send the messages you approved, and only those.</li>
+    <li><strong>Send email</strong>: to send the messages you approved, and only those.</li>
+    <li><strong>Read Sent-mail headers</strong>: recipient and date headers only, so the app never contacts the same person twice. Bodies are never read.</li>
+    <li><strong>Detect replies and bounces</strong>: the app reads the sender of recent inbox messages, and the text only of messages from people you emailed and of delivery-failure notices, so it can stop follow-ups and pause when addresses bounce.</li>
   </ul>
-  <p>It also learns which account signed in (your email address). The app cannot read, search or delete anything in your mailbox. Everything is processed on your computer, and nothing is sent to the developer. You can sign out inside the app at any time, which revokes access, or remove it at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. Details are in the <a href="privacy.html">Privacy Policy</a>.</p>
+  <p>It also learns which account signed in (your email address). The app never changes, moves or deletes anything in your mailbox, even though the permission technically allows it, and it never reads other messages. Everything is processed on your computer, and nothing is sent to the developer. You can sign out inside the app at any time, which revokes access, or remove it at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. Details are in the <a href="privacy.html">Privacy Policy</a>.</p>
 
   <h2>Get it</h2>
   <p>Downloads and source code: <a href="https://github.com/Heliodroid/outreach-pilot">github.com/Heliodroid/outreach-pilot</a>. The project is open source under the licence in that repository.</p>

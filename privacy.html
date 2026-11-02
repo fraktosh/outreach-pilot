@@ -19,6 +19,9 @@
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; }
   a { color: var(--accent); }
   code { font-size: .92em; }
+  table { width: 100%; border-collapse: collapse; font-size: .9rem; display: block; overflow-x: auto; }
+  th, td { text-align: left; vertical-align: top; padding: 8px 10px; border: 1px solid var(--line); min-width: 120px; }
+  th { background: var(--card); }
   footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
   footer a { margin-right: 16px; }
 </style>
@@ -41,6 +44,30 @@
     <li><strong>How long it is kept:</strong> only on your own computer, until you sign out or delete the local folder.</li>
     <li><strong>Security:</strong> the sign-in token is stored in a file readable only by your user account, and all communication with Google uses HTTPS.</li>
   </ul>
+
+  <h2>Data the app handles: purpose, storage, sharing and retention</h2>
+  <table>
+    <thead><tr><th>Data</th><th>Why the app uses it</th><th>Where it is stored</th><th>Shared with</th><th>Kept until</th></tr></thead>
+    <tbody>
+      <tr><td>Your Google email address</td><td>Show the signed-in account and use it as the sender</td><td>Your computer only (<code>oauth_token.json</code>)</td><td>Nobody</td><td>You sign out</td></tr>
+      <tr><td>OAuth refresh and access tokens</td><td>Let the app call the Gmail API for you without your password</td><td>Your computer only, owner-only file permissions</td><td>Google (to refresh the token)</td><td>You sign out, revoke access, or Google expires them</td></tr>
+      <tr><td>Messages you approve</td><td>Send them through Gmail</td><td>Local campaign database</td><td>Google (to deliver) and the recipient you chose</td><td>You delete the local folder</td></tr>
+      <tr><td>Recipient and date headers of Sent mail</td><td>Never contact the same person twice</td><td>Local campaign database (addresses and status only)</td><td>Nobody</td><td>You delete the local folder</td></tr>
+      <tr><td>Sender of recent inbox mail; text of replies from people you emailed and of bounce notices</td><td>Detect replies, opt-outs and bounces so follow-ups stop and sending can pause</td><td>Only the resulting status is saved (for example "replied", "bounced"); message text is read in memory and not stored</td><td>Nobody</td><td>You delete the local folder</td></tr>
+    </tbody>
+  </table>
+
+  <h2>How we protect your data</h2>
+  <ul>
+    <li>No Google user data leaves your computer except the mail you chose to send, which goes to Google over HTTPS (TLS).</li>
+    <li>The developer runs no server, database or analytics, so there is nothing to breach on our side and no copy of your data to leak.</li>
+    <li>OAuth uses the installed-app flow with PKCE and a one-time loopback redirect to <code>127.0.0.1</code>. The app never sees or stores your Google password.</li>
+    <li>The token file is created with owner-only permissions where the operating system supports it. Anyone with access to your operating-system account could read it, so keep your computer account protected.</li>
+    <li>The app requests the narrowest set of permissions it needs and does not use the full-access <code>https://mail.google.com/</code> scope.</li>
+  </ul>
+
+  <h2>Deleting your data and withdrawing consent</h2>
+  <p>Because the data lives on your own device, you are in control of it. Choose "Sign out" in the app, remove OutreachPilot at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>, and delete the <code>.outreach_pilot</code> folder in your home directory to erase everything the app stored. The developer holds no copy, so there is no data on our side to delete. For any question or request, write to <a href="mailto:sahasoham814@gmail.com">sahasoham814@gmail.com</a>.</p>
 
   <h2>1. Who we are</h2>
   <p>OutreachPilot is an open-source application developed by Soham Saha. Source code: <a href="https://github.com/Heliodroid/outreach-pilot">github.com/Heliodroid/outreach-pilot</a>. Contact: <a href="mailto:sahasoham814@gmail.com">sahasoham814@gmail.com</a>.</p>
