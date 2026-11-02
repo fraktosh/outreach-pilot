@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OutreachPilot Privacy Policy</title>
+<meta name="description" content="How OutreachPilot handles your Google account data. Everything stays on your computer.">
+<style>
+  :root { --bg: #f7f8fa; --fg: #1c2430; --muted: #5a6677; --card: #ffffff; --line: #dfe3ea; --accent: #2457d6; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0b0f17; --fg: #e6eaf0; --muted: #9aa6b8; --card: #131b26; --line: #243042; --accent: #7aa2ff; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 48px 16px 64px; }
+  h1 { font-size: 2rem; margin: 0 0 4px; }
+  h2 { font-size: 1.15rem; margin: 32px 0 8px; }
+  .meta { color: var(--muted); margin: 0 0 24px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; }
+  a { color: var(--accent); }
+  code { font-size: .92em; }
+  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+  footer a { margin-right: 16px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Privacy Policy</h1>
+  <p class="meta">OutreachPilot &middot; Last updated 29 October 2026</p>
+
+  <div class="card">
+    <p style="margin:0"><strong>In short:</strong> OutreachPilot is a desktop application that runs on your computer. It has no server and no developer-run backend. The Google data it accesses is processed on your device and is never sent to the developer or to any third party.</p>
+  </div>
+
+  <h2>Summary of data handling</h2>
+  <ul>
+    <li><strong>App name:</strong> OutreachPilot (shown as "outreachpilot" on Google's consent screen). Home page: <a href="index.html">fraktosh.github.io/outreach-pilot</a>.</li>
+    <li><strong>What the app accesses from your Google Account:</strong> your email address; the ability to send email on your behalf; the recipient and date headers of your Sent mail; and the sender of recent inbox messages (plus the text only of replies from people you emailed and of delivery-failure notices) to detect replies and bounces.</li>
+    <li><strong>What the app does not access:</strong> message bodies of your Sent mail, other inbox messages, drafts, contacts, calendar, Drive or any other Google data. It never modifies, moves, labels or deletes your mail.</li>
+    <li><strong>Where data goes:</strong> to Google (to send the mail you approved, over HTTPS) and nowhere else. No data is sent to the developer or to third parties.</li>
+    <li><strong>How long it is kept:</strong> only on your own computer, until you sign out or delete the local folder.</li>
+    <li><strong>Security:</strong> the sign-in token is stored in a file readable only by your user account, and all communication with Google uses HTTPS.</li>
+  </ul>
+
+  <h2>1. Who we are</h2>
+  <p>OutreachPilot is an open-source application developed by Soham Saha. Source code: <a href="https://github.com/Heliodroid/outreach-pilot">github.com/Heliodroid/outreach-pilot</a>. Contact: <a href="mailto:sahasoham814@gmail.com">sahasoham814@gmail.com</a>.</p>
+
+  <h2>2. Google user data we access</h2>
+  <p>If you choose "Sign in with Google", the app requests these permissions through Google's OAuth 2.0 consent screen:</p>
+  <ul>
+    <li><strong>Your email address and sign-in identity</strong> (<code>openid</code>, <code>email</code>): to show which account is signed in and to use it as the sender address.</li>
+    <li><strong>Send email on your behalf</strong> (<code>gmail.send</code>): to send the messages that you reviewed and approved.</li>
+  </ul>
+  <p>The app does not request permission to read, list, search, modify or delete your mail, and it cannot do so. It sees only the messages it sends.</p>
+
+  <h2>3. How the data is used and stored</h2>
+  <ul>
+    <li>All processing happens locally on your computer. We do not operate any server that receives your Google data.</li>
+    <li>The app stores a revocable OAuth refresh token and your email address in <code>~/.outreach_pilot/oauth_token.json</code> on your device, with owner-only file permissions where the operating system supports it.</li>
+    <li>Recipient addresses and send status (for example "sent", "failed") are kept in a local database in the same folder. This is the campaign history you see in the app.</li>
+    <li>Message content you approve is passed to Gmail only to send it.</li>
+  </ul>
+
+  <h2>4. Sharing</h2>
+  <p>We do not sell, share, transfer or disclose Google user data to anyone, and it is not used to train any AI or machine-learning model. The app has no access to your Gmail content beyond the messages it sends. The language-model providers the app can use for drafting only receive the CV and the public information about the recipient that you supply for drafting.</p>
+
+  <h2>5. Google API Services User Data Policy</h2>
+  <p>OutreachPilot's use and transfer of information received from Google APIs to any other app adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. Specifically:</p>
+  <ul>
+    <li>We use Google user data only to provide and improve the user-facing features described above.</li>
+    <li>We do not transfer the data to others except as needed to provide those features, to comply with law, or as part of a merger or sale with your prior consent.</li>
+    <li>We do not use the data for serving advertisements.</li>
+    <li>No human reads your Google user data. Because the app runs only on your device, the developer has no access to it.</li>
+  </ul>
+
+  <h2>6. Your controls</h2>
+  <ul>
+    <li><strong>Sign out:</strong> choose "Sign out" in the app. It revokes the token with Google and deletes the local token file.</li>
+    <li><strong>Revoke from Google:</strong> remove OutreachPilot at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a> at any time.</li>
+    <li><strong>Delete local data:</strong> delete the <code>.outreach_pilot</code> folder in your home directory. This removes the token, the campaign database and settings.</li>
+  </ul>
+
+  <h2>7. Retention</h2>
+  <p>Data stays on your device until you sign out or delete the folder above. Google access tokens expire after about an hour; the refresh token is kept until you sign out, revoke access, or Google expires it.</p>
+
+  <h2>8. Other data</h2>
+  <p>To draft emails the app sends your CV text and public information about each recipient to the language-model provider you configure (Google Gemini, OpenAI or Anthropic), using your own API key. That use is governed by the provider's terms. To find and verify addresses the app also makes ordinary web and DNS requests and may open a connection to a recipient's mail server to check that an address exists, without sending any message.</p>
+
+  <h2>9. Children</h2>
+  <p>OutreachPilot is not directed at children under 13, and we do not knowingly collect data from them.</p>
+
+  <h2>10. Changes</h2>
+  <p>If this policy changes, the updated version will be posted on this page with a new date.</p>
+
+  <h2>11. Contact</h2>
+  <p>Questions or requests: <a href="mailto:sahasoham814@gmail.com">sahasoham814@gmail.com</a>.</p>
+
+  <footer>
+    <a href="index.html">Home</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="https://github.com/Heliodroid/outreach-pilot">Source code</a>
+  </footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OutreachPilot</title>
+<meta name="description" content="OutreachPilot is a free desktop app that helps students and researchers write, review and send personalised outreach emails to academics.">
+<style>
+  :root { --bg: #f7f8fa; --fg: #1c2430; --muted: #5a6677; --card: #ffffff; --line: #dfe3ea; --accent: #2457d6; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0b0f17; --fg: #e6eaf0; --muted: #9aa6b8; --card: #131b26; --line: #243042; --accent: #7aa2ff; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 48px 16px 64px; }
+  h1 { font-size: 2rem; margin: 0 0 8px; }
+  h2 { font-size: 1.15rem; margin: 36px 0 8px; }
+  p, li { color: var(--fg); }
+  .lead { color: var(--muted); font-size: 1.1rem; margin: 0 0 24px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; }
+  a { color: var(--accent); }
+  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+  footer a { margin-right: 16px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>OutreachPilot</h1>
+  <p class="lead">A free desktop app that helps students and researchers write, review and send personalised emails to academics.</p>
+
+  <div class="card">
+    <p style="margin:0">OutreachPilot runs on your own computer (Windows, macOS, Linux). You bring your CV; the app helps you find relevant researchers, check that their email addresses are real, draft a tailored message for each one, and send the messages you approve at a polite, rate-limited pace.</p>
+  </div>
+
+  <h2>What it does</h2>
+  <ul>
+    <li>Reads your CV and summarises your skills and research interests.</li>
+    <li>Finds faculty and lab leads, and keeps only individual, publicly listed academic email addresses.</li>
+    <li>Checks each address (syntax, DNS, mailbox probe) before anything is sent. No verification is sent as email.</li>
+    <li>Drafts one personalised email per person. You review and approve every message.</li>
+    <li>Sends approved messages with daily limits, sending windows and automatic pausing if bounces appear.</li>
+    <li>Respects opt-outs: anyone you mark as replied or opted out is never contacted again.</li>
+  </ul>
+
+  <h2>Sign in with Google</h2>
+  <p>To send mail from your own Gmail account, OutreachPilot uses Google's standard sign-in (OAuth 2.0). Your browser opens Google's own consent page, so the app never sees your password. The app asks for one Gmail permission:</p>
+  <ul>
+    <li><strong>Send email</strong> (<code>gmail.send</code>): to send the messages you approved, and only those.</li>
+  </ul>
+  <p>It also learns which account signed in (your email address). The app cannot read, search or delete anything in your mailbox. Everything is processed on your computer, and nothing is sent to the developer. You can sign out inside the app at any time, which revokes access, or remove it at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. Details are in the <a href="privacy.html">Privacy Policy</a>.</p>
+
+  <h2>Get it</h2>
+  <p>Downloads and source code: <a href="https://github.com/Heliodroid/outreach-pilot">github.com/Heliodroid/outreach-pilot</a>. The project is open source under the licence in that repository.</p>
+
+  <footer>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="https://github.com/Heliodroid/outreach-pilot">Source code</a>
+    <a href="mailto:sahasoham814@gmail.com">Contact</a>
+  </footer>
+</main>
+</body>
+</html>
