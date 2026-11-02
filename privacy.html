@@ -53,7 +53,7 @@
       <tr><td>OAuth refresh and access tokens</td><td>Let the app call the Gmail API for you without your password</td><td>Your computer only, owner-only file permissions</td><td>Google (to refresh the token)</td><td>You sign out, revoke access, or Google expires them</td></tr>
       <tr><td>Messages you approve</td><td>Send them through Gmail</td><td>Local campaign database</td><td>Google (to deliver) and the recipient you chose</td><td>You delete the local folder</td></tr>
       <tr><td>Recipient and date headers of Sent mail</td><td>Never contact the same person twice</td><td>Local campaign database (addresses and status only)</td><td>Nobody</td><td>You delete the local folder</td></tr>
-      <tr><td>Sender of recent inbox mail; text of replies from people you emailed and of bounce notices</td><td>Detect replies, opt-outs and bounces so follow-ups stop and sending can pause</td><td>Only the resulting status is saved (for example "replied", "bounced"); message text is read in memory and not stored</td><td>Nobody</td><td>You delete the local folder</td></tr>
+      <tr><td>Sender of recent inbox mail; text of replies from people you emailed and of bounce notices</td><td>Detect replies, opt-outs and bounces so follow-ups stop and sending can pause</td><td>The resulting status is saved (for example "replied", "bounced"). Reply text is read in memory and not stored; for a delivery-failure notice the first 200 characters are kept in the local send log</td><td>Nobody</td><td>You delete the local folder</td></tr>
     </tbody>
   </table>
 
