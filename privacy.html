@@ -29,7 +29,7 @@
 <body>
 <main>
   <h1>Privacy Policy</h1>
-  <p class="meta">OutreachPilot &middot; Last updated 29 October 2026</p>
+  <p class="meta">OutreachPilot &middot; Last updated 12 November 2026</p>
 
   <div class="card">
     <p style="margin:0"><strong>In short:</strong> OutreachPilot is a desktop application that runs on your computer. It has no server and no developer-run backend. The Google data it accesses is processed on your device and is never sent to the developer or to any third party.</p>
@@ -38,8 +38,8 @@
   <h2>Summary of data handling</h2>
   <ul>
     <li><strong>App name:</strong> OutreachPilot (shown as "outreachpilot" on Google's consent screen). Home page: <a href="index.html">fraktosh.github.io/outreach-pilot</a>.</li>
-    <li><strong>What the app accesses from your Google Account:</strong> your email address; the ability to send email on your behalf; the recipient and date headers of your Sent mail; and the sender of recent inbox messages (plus the text only of replies from people you emailed and of delivery-failure notices) to detect replies and bounces.</li>
-    <li><strong>What the app does not access:</strong> message bodies of your Sent mail, other inbox messages, drafts, contacts, calendar, Drive or any other Google data. It never modifies, moves, labels or deletes your mail.</li>
+    <li><strong>What the app accesses from your Google Account:</strong> your email address; the ability to send email on your behalf; the recipient and date headers of your Sent mail; and the sender of recent inbox messages (plus the text only of replies from people you emailed and of delivery-failure notices) to detect replies and bounces. It also creates drafts of the messages you ask it to prepare, so you can edit and send them yourself.</li>
+    <li><strong>What the app does not access:</strong> message bodies of your Sent mail, other inbox messages, contacts, calendar, Drive or any other Google data. It never moves or labels your mail, and it deletes nothing except drafts: drafts addressed to a person once a message to that person has been sent, and, only if you choose "Purge Gmail drafts folder" and confirm, the drafts in your account.</li>
     <li><strong>Where data goes:</strong> to Google (to send the mail you approved, over HTTPS) and nowhere else. No data is sent to the developer or to third parties.</li>
     <li><strong>How long it is kept:</strong> only on your own computer, until you sign out or delete the local folder.</li>
     <li><strong>Security:</strong> the sign-in token is stored in a file readable only by your user account, and all communication with Google uses HTTPS.</li>
@@ -52,6 +52,7 @@
       <tr><td>Your Google email address</td><td>Show the signed-in account and use it as the sender</td><td>Your computer only (<code>oauth_token.json</code>)</td><td>Nobody</td><td>You sign out</td></tr>
       <tr><td>OAuth refresh and access tokens</td><td>Let the app call the Gmail API for you without your password</td><td>Your computer only, owner-only file permissions</td><td>Google (to refresh the token)</td><td>You sign out, revoke access, or Google expires them</td></tr>
       <tr><td>Messages you approve</td><td>Send them through Gmail</td><td>Local campaign database</td><td>Google (to deliver) and the recipient you chose</td><td>You delete the local folder</td></tr>
+      <tr><td>Drafts</td><td>Put a message you prepared in your Gmail Drafts so you can edit and send it yourself. The app deletes drafts addressed to a person after a message to that person was sent (by the app or by you), so it is not sent twice, and deletes the drafts in your account if you choose "Purge Gmail drafts folder" and confirm</td><td>The draft lives in your Gmail account; the local database keeps only whether a draft was created</td><td>Nobody</td><td>You delete the draft or the local folder</td></tr>
       <tr><td>Recipient and date headers of Sent mail</td><td>Never contact the same person twice</td><td>Local campaign database (addresses and status only)</td><td>Nobody</td><td>You delete the local folder</td></tr>
       <tr><td>Sender of recent inbox mail; text of replies from people you emailed and of bounce notices</td><td>Detect replies, opt-outs and bounces so follow-ups stop and sending can pause</td><td>The resulting status is saved (for example "replied", "bounced"). Reply text is read in memory and not stored; for a delivery-failure notice the first 200 characters are kept in the local send log</td><td>Nobody</td><td>You delete the local folder</td></tr>
     </tbody>
@@ -76,20 +77,23 @@
   <p>If you choose "Sign in with Google", the app requests these permissions through Google's OAuth 2.0 consent screen:</p>
   <ul>
     <li><strong>Your email address and sign-in identity</strong> (<code>openid</code>, <code>email</code>): to show which account is signed in and to use it as the sender address.</li>
-    <li><strong>Send email on your behalf</strong> (<code>gmail.send</code>): to send the messages that you reviewed and approved.</li>
+    <li><strong>Send email on your behalf</strong> (<code>gmail.modify</code>): to send the messages that you reviewed and approved.</li>
+    <li><strong>Read Sent-mail headers</strong> (<code>gmail.modify</code>): the recipient and date headers of messages you already sent, so the app never contacts the same person twice. The bodies of your Sent mail are never read.</li>
+    <li><strong>Detect replies and bounces</strong> (<code>gmail.modify</code>): the sender of recent inbox messages, and the text only of messages from people you emailed and of delivery-failure notices, so follow-ups stop and sending can pause.</li>
+    <li><strong>Create and delete drafts</strong> (<code>gmail.modify</code>): to put the messages you prepared into your Gmail Drafts folder; to delete drafts addressed to a person once a message to that person has been sent, so it is not sent twice; and, only when you choose "Purge Gmail drafts folder" and confirm, to delete the drafts in your account.</li>
   </ul>
-  <p>The app does not request permission to read, list, search, modify or delete your mail, and it cannot do so. It sees only the messages it sends.</p>
+  <p><code>gmail.modify</code> is the only Gmail permission the app requests, and it does not request the full-access <code>https://mail.google.com/</code> scope. The permission technically allows changing mail, but apart from the drafts described above the app does not use it to modify, move, label or delete your messages, and it does not read any other messages.</p>
 
   <h2>3. How the data is used and stored</h2>
   <ul>
     <li>All processing happens locally on your computer. We do not operate any server that receives your Google data.</li>
     <li>The app stores a revocable OAuth refresh token and your email address in <code>~/.outreach_pilot/oauth_token.json</code> on your device, with owner-only file permissions where the operating system supports it.</li>
     <li>Recipient addresses and send status (for example "sent", "failed") are kept in a local database in the same folder. This is the campaign history you see in the app.</li>
-    <li>Message content you approve is passed to Gmail only to send it.</li>
+    <li>Message content you approve is passed to Gmail only to send it or to save it as a draft.</li>
   </ul>
 
   <h2>4. Sharing</h2>
-  <p>We do not sell, share, transfer or disclose Google user data to anyone, and it is not used to train any AI or machine-learning model. The app has no access to your Gmail content beyond the messages it sends. The language-model providers the app can use for drafting only receive the CV and the public information about the recipient that you supply for drafting.</p>
+  <p>We do not sell, share, transfer or disclose Google user data to anyone, and it is not used to train any AI or machine-learning model. The app does not read your Gmail content beyond what is described in section 2. The language-model providers the app can use for drafting only receive the CV and the public information about the recipient that you supply for drafting.</p>
 
   <h2>5. Google API Services User Data Policy</h2>
   <p>OutreachPilot's use and transfer of information received from Google APIs to any other app adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. Specifically:</p>
