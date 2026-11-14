@@ -3,30 +3,47 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OutreachPilot</title>
+<title>OutreachPilot - v2.0.0</title>
 <meta name="description" content="OutreachPilot is a free desktop app that helps students and researchers write, review and send personalised outreach emails to academics.">
 <style>
-  :root { --bg: #f7f8fa; --fg: #1c2430; --muted: #5a6677; --card: #ffffff; --line: #dfe3ea; --accent: #2457d6; }
+  :root { --bg: #f7f8fa; --fg: #1c2430; --muted: #5a6677; --card: #ffffff; --line: #dfe3ea; --accent: #2457d6; --badge: #eef2ff; --badge-border: #c7d2fe; --badge-text: #3730a3; }
   @media (prefers-color-scheme: dark) {
-    :root { --bg: #0b0f17; --fg: #e6eaf0; --muted: #9aa6b8; --card: #131b26; --line: #243042; --accent: #7aa2ff; }
+    :root { --bg: #0b0f17; --fg: #e6eaf0; --muted: #9aa6b8; --card: #131b26; --line: #243042; --accent: #7aa2ff; --badge: #1e1b4b; --badge-border: #3730a3; --badge-text: #c7d2fe; }
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-  main { max-width: 720px; margin: 0 auto; padding: 48px 16px 64px; }
-  h1 { font-size: 2rem; margin: 0 0 8px; }
-  h2 { font-size: 1.15rem; margin: 36px 0 8px; }
+  main { max-width: 760px; margin: 0 auto; padding: 48px 16px 64px; }
+  h1 { font-size: 2.1rem; margin: 0 0 8px; display: flex; align-items: center; gap: 12px; }
+  h2 { font-size: 1.25rem; margin: 36px 0 12px; }
   p, li { color: var(--fg); }
-  .lead { color: var(--muted); font-size: 1.1rem; margin: 0 0 24px; }
-  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; }
-  a { color: var(--accent); }
+  .badge { font-size: 0.85rem; padding: 3px 10px; border-radius: 999px; background: var(--badge); border: 1px solid var(--badge-border); color: var(--badge-text); font-weight: 600; vertical-align: middle; }
+  .lead { color: var(--muted); font-size: 1.15rem; margin: 0 0 24px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px 22px; margin-bottom: 24px; }
+  .update-box { background: var(--card); border: 1.5px solid var(--accent); border-radius: 10px; padding: 20px 24px; margin-bottom: 30px; }
+  .update-box h3 { margin-top: 0; color: var(--accent); font-size: 1.15rem; }
+  .update-box ul { margin: 8px 0 0; padding-left: 20px; }
+  .update-box li { margin-bottom: 6px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
   footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
   footer a { margin-right: 16px; }
 </style>
 </head>
 <body>
 <main>
-  <h1>OutreachPilot</h1>
+  <h1>OutreachPilot <span class="badge">v2.0.0</span></h1>
   <p class="lead">A free desktop app that helps students and researchers write, review and send personalised emails to academics.</p>
+
+  <div class="update-box">
+    <h3>What's new in v2.0</h3>
+    <ul>
+      <li><strong>Mailbox page</strong>: your whole Gmail account inside the app, read only. Inbox, Starred, Important, Sent and Drafts are in the sidebar; All Mail, Spam, Trash and your labels are under More. Search with Gmail's own search words and read the message as it is. Nothing is sent, moved or deleted from there.</li>
+      <li><strong>Faster, checked drafting</strong>: several recipients are written in one model request, parallel requests are spread over the Gemini models, and every draft is checked (right name, no invented number) before it is saved. A draft that fails the checks twice is not saved.</li>
+      <li><strong>Evidence-first address lookup</strong>: an address is kept only when the place that published it ties it to the person, and the evidence is recorded.</li>
+      <li><strong>Several accounts</strong>: each with its own targets, CV profile, settings and Google sign-in, kept apart on your computer and switched from the sidebar.</li>
+      <li><strong>Pause and resume</strong> for the long jobs, also across a restart, and a back button from every page to Targets.</li>
+    </ul>
+  </div>
 
   <div class="card">
     <p style="margin:0">OutreachPilot runs on your own computer (Windows, macOS, Linux). You bring your CV; the app helps you find relevant researchers, check that their email addresses are real, draft a tailored message for each one, and send the messages you approve at a polite, rate-limited pace.</p>
@@ -36,20 +53,21 @@
   <ul>
     <li>Reads your CV and summarises your skills and research interests.</li>
     <li>Finds faculty and lab leads, and keeps only individual, publicly listed academic email addresses.</li>
-    <li>Checks each address (syntax, DNS, mailbox probe) before anything is sent. No verification is sent as email.</li>
-    <li>Drafts one personalised email per person. You review and approve every message.</li>
+    <li>Checks each address (syntax, DNS, OpenAlex, mailbox probe) before anything is sent. No verification is sent as email.</li>
+    <li>Drafts one personalised email per person with tailored technical utility. You review and approve every message.</li>
     <li>Sends approved messages with daily limits, sending windows and automatic pausing if bounces appear.</li>
     <li>Respects opt-outs: anyone you mark as replied or opted out is never contacted again.</li>
   </ul>
 
   <h2>Sign in with Google</h2>
-  <p>To send mail from your own Gmail account, OutreachPilot uses Google's standard sign-in (OAuth 2.0). Your browser opens Google's own consent page, so the app never sees your password. The app asks for one Gmail permission, <code>gmail.modify</code>, and uses it for three things:</p>
+  <p>To send mail from your own Gmail account, OutreachPilot uses Google's standard sign-in (OAuth 2.0). Your browser opens Google's own consent page, so the app never sees your password. The app asks for one Gmail permission, <code>gmail.modify</code>, and uses it for four things:</p>
   <ul>
     <li><strong>Send email</strong>: to send the messages you approved, and only those.</li>
-    <li><strong>Read Sent-mail headers</strong>: recipient and date headers only, so the app never contacts the same person twice. Bodies are never read.</li>
-    <li><strong>Detect replies and bounces</strong>: the app reads the sender of recent inbox messages, and the text only of messages from people you emailed and of delivery-failure notices, so it can stop follow-ups and pause when addresses bounce.</li>
+    <li><strong>Read Sent-mail headers</strong>: recipient and date headers only, so the app never contacts the same person twice and accurately links manual sends. This scan never reads bodies.</li>
+    <li><strong>Detect replies and bounces</strong>: the app reads the sender of recent inbox messages, and the text only of messages from people you emailed and of delivery-failure notices, so it can auto-craft contextual follow-up replies and pause when addresses bounce.</li>
+    <li><strong>Show your mailbox, read only</strong>: the folders of your account, message lists, and one message in full when you open it, only to display it on screen. Images and remote content are not loaded, attachments are not downloaded, and nothing is stored on disk.</li>
   </ul>
-  <p>It also learns which account signed in (your email address). The app never changes, moves or deletes anything in your mailbox, even though the permission technically allows it, and it never reads other messages. Everything is processed on your computer, and nothing is sent to the developer. You can sign out inside the app at any time, which revokes access, or remove it at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. Details are in the <a href="privacy.html">Privacy Policy</a>.</p>
+  <p>It also learns which account signed in (your email address). The app never changes, moves or deletes anything in your mailbox, even though the permission technically allows it, and it never reads a message you have not opened yourself on the Mailbox page. Everything is processed on your computer, and nothing is sent to the developer. You can sign out inside the app at any time, which revokes access, or remove it at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. Details are in the <a href="privacy.html">Privacy Policy</a>.</p>
 
   <h2>Get it</h2>
   <p>Downloads and source code: <a href="https://github.com/Heliodroid/outreach-pilot">github.com/Heliodroid/outreach-pilot</a>. The project is open source under the licence in that repository.</p>
